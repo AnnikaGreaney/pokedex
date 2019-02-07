@@ -28,10 +28,14 @@ class PokemonsController extends Controller
       }
     }
 
-    public function captured($id)
+    public function captured($idOrName)
     {
       $user = auth()->user();
-      $pokemon = Pokemon::find($id);
+      if(is_numeric($idOrName)){
+        $pokemon = Pokemon::find($idOrName);
+      } else {
+        $pokemon = Pokemon::whereName($idOrName)->first();
+      }
       $already_caught = Pokedex::where(['user_id' => $user->id, 'pokemon_id' => $id])->get();
       if(sizeof($already_caught) > 0){
         $dex_entry = $already_caught[0];
