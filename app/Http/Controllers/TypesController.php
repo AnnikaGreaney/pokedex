@@ -13,7 +13,7 @@ class TypesController extends Controller
     return response()->json(Type::all());
   }
 
-  public function pokemonByType($nameOrId)
+  public function show($nameOrId)
   {
     if(is_numeric($nameOrId)){
       $pokemon = Type::find($nameOrId)->with('pokemons')->get();
