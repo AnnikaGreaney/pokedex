@@ -22,7 +22,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('login', 'PassportController@login');
 Route::post('register', 'PassportController@register');
 Route::middleware('auth:api')->group(function(){
-  Route::get('user', 'PassportController@details');
+  Route::get('trainer', 'PassportController@details');
   Route::post('pokemon/{pokemon}/captured', 'PokemonsController@captured');
   Route::get('pokemon/attackers', 'PokemonsController@attackers');
   Route::get('pokemon/defenders', 'PokemonsController@defenders');
