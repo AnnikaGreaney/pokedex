@@ -25,6 +25,8 @@ Route::middleware('auth:api')->group(function(){
   Route::get('user', 'PassportController@details');
   Route::post('pokemon/{pokemon}/captured', 'PokemonsController@captured');
   Route::apiResource('pokemon','PokemonsController');
+  Route::get('abilities','AbilitiesController@index');
+  Route::get('abilities/{ability}', 'AbilitiesController@show');
   Route::get('types','TypesController@index');
   Route::get('types/{type}','TypesController@pokemonByType');
 });
