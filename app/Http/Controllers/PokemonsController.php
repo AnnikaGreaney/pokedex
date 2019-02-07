@@ -14,10 +14,18 @@ class PokemonsController extends Controller
       return response()->json(PokemonResource::collection(Pokemon::paginate(25)));
     }
 
-    public function show($id)
+    public function show($idOrName)
     {
-      $pokemon = Pokemon::find($id);
-      return response()->json(new PokemonResource(Pokemon::find($id)));
+      if(is_numeric($idOrName)){
+        $pokemon = Pokemon::find($idOrName);
+      } else {
+        $pokemon = Pokemon::whereName($idOrName)->first();
+      }
+      if($pokemon){
+        return response()->json(new PokemonResource($pokemon));
+      } else {
+        return response()->json(['error' => 'No Pokemon found']);
+      }
     }
 
     public function captured($id)
