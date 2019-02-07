@@ -36,7 +36,7 @@ class PokemonsController extends Controller
       } else {
         $pokemon = Pokemon::whereName($idOrName)->first();
       }
-      $already_caught = Pokedex::where(['user_id' => $user->id, 'pokemon_id' => $id])->get();
+      $already_caught = Pokedex::where(['user_id' => $user->id, 'pokemon_id' => $pokemon->id])->get();
       if(sizeof($already_caught) > 0){
         $dex_entry = $already_caught[0];
         $message_type = 'error';
@@ -44,7 +44,7 @@ class PokemonsController extends Controller
       } else {
         $dex_entry = Pokedex::create([
           'user_id' => $user->id,
-          'pokemon_id' => $id,
+          'pokemon_id' => $pokemon->id,
         ]);
         $message_type = 'success';
         $message = $pokemon->name.' has been marked as captured';

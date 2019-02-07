@@ -48,6 +48,6 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-      return response()->json(['status' => 'object requested not found'], 404); #parent::render($request, $exception);
+      return response()->json(['status' => 'object requested not found'], 404);#parent::render($request, $exception);
     }
 }
