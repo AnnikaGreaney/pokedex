@@ -15,7 +15,7 @@ class AbilitiesController extends Controller
     public function show($nameOrId)
     {
       if(is_numeric($nameOrId)){
-        $pokemon = Ability::with('pokemons')->where(['id' => $id])->get();
+        $pokemon = Ability::with('pokemons')->where(['id' => $nameOrid])->get();
       } else {
         $pokemon = Ability::where(['name' => $nameOrId])->with('pokemons')->get();
       }

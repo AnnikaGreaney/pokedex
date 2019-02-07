@@ -8,6 +8,6 @@ class Genus extends Model
 {
     public function pokemons()
     {
-      $this->hasMany(Pokemon::class);
+      return $this->hasMany(Pokemon::class);
     }
 }

@@ -32,6 +32,8 @@ Route::middleware('auth:api')->group(function(){
   Route::get('abilities/{ability}', 'AbilitiesController@show');
   Route::get('types','TypesController@index');
   Route::get('types/{type}','TypesController@show');
+  Route::get('genus', 'GeneraController@index');
+  Route::get('genus/{genus}', 'GeneraController@show');
 });
 
 Route::fallback(function(){
