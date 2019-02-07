@@ -24,11 +24,14 @@ Route::post('register', 'PassportController@register');
 Route::middleware('auth:api')->group(function(){
   Route::get('user', 'PassportController@details');
   Route::post('pokemon/{pokemon}/captured', 'PokemonsController@captured');
+  Route::get('pokemon/attackers', 'PokemonsController@attackers');
+  Route::get('pokemon/defenders', 'PokemonsController@defenders');
+  Route::post('pokemon/battle', 'PokemonsController@battle');
   Route::apiResource('pokemon','PokemonsController');
   Route::get('abilities','AbilitiesController@index');
   Route::get('abilities/{ability}', 'AbilitiesController@show');
   Route::get('types','TypesController@index');
-  Route::get('types/{type}','TypesController@pokemonByType');
+  Route::get('types/{type}','TypesController@show');
 });
 
 Route::fallback(function(){
